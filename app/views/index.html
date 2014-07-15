@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>#SignIt2014 | <%= signtitle %></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='http://fonts.googleapis.com/css?family=Cedarville+Cursive' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<meta property="fb:app_id" content="644528775640984" />
+	<meta property="og:title" content="#SignIt2014 | <%= signtitle %>" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="<%= shareurl %>" />
+	<meta property="og:image" content="<%= shareimage %>" />
+	<meta property="og:description" content="<%= signdesc %>" />
+	<meta name="description" value="<%= signdesc %>" />
+
+	<link rel="apple-touch-icon" sizes="57x57" href="/static/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/static/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/static/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/static/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/static/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/static/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/static/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/static/apple-touch-icon-152x152.png">
+	<link rel="icon" type="image/png" href="/static/favicon-196x196.png" sizes="196x196">
+	<link rel="icon" type="image/png" href="/static/favicon-160x160.png" sizes="160x160">
+	<link rel="icon" type="image/png" href="/static/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="/static/favicon-16x16.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="/static/favicon-32x32.png" sizes="32x32">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/static/mstile-144x144.png">
+
+	<!--[if lt IE 9]> <script src="/static/js/html5.shiv.min.js"></script> <![endif]-->
+</head>
+<body>
+	<div id="background"><img src="/static/img/page-bg.png" alt=""></div>
+	<div id="output"></div>
+	<header class="navbar navbar-transparent" role="navigation">
+		<div class="container">
+			<div class="headerbox">
+				<h1 class="logo-signit"><a href="/"><img src="/static/img/logo.png" alt="#SIGNIT2014" /></a></h1>
+				<a class="logo-pma" href="http://www.peteramayer.com" target="_blank">Peter Mayer Advertising</a>
+			</div>
+		</div>
+	</header>
+	<main class="main container">
+		<div class="buffer openingcopy firstvisit">
+		<% if ( !onesig ) { %>
+			<div id="signitmessage">
+				<p>The summer of 1776 was certainly a season to remember. The patriotic spirit, the speeches, the powdered wigs. It&rsquo;s just too bad you weren&rsquo;t around to sign the <a href="http://en.wikipedia.org/wiki/United_States_Declaration_of_Independence" data-trackclick="link" target="_blank">Declaration of Independence</a>. <br>
+				So here&rsquo;s your chance. </p>
+				<p>Simply click below to see your name next to those who stood up for liberty and equality. And for every signature that&rsquo;s added, <strong>Peter Mayer will make a donation to the <a href="http://www.archives.gov/nae/support/" data-trackclick="link" target="_blank">Foundation for the National Archives</a></strong> to help preserve our nation&rsquo;s historical documents.</p>
+				<br>
+				<a href="https://twitter.com/share" data-trackclick="button" data-url="<%= trackerURL %>" data-text="<%= tweetmessage %>" target="_blank" class="btn btn-default btn-gianttwitter twittershare"><img src="/static/img/twitter-bird-logo.png" alt="Twitter"> &nbsp;Sign Now with Twitter</a>
+				<p class="cookiehide"><small>John Hancock only signed it once. <nobr>Same goes for you.</nobr></small></p>
+			</div>
+		<% 
+			} else { 
+				var shareURLParam = encodeURIComponent( ( 'http://signit2014.com/signed/'+onesig.replace(/[^a-zA-Z0-9_]*/,'')+'/' ) );
+				var twitterText = encodeURIComponent('I just signed the Declaration #SignIt2014. You can do it too. ');
+ 		
+ 		%>
+			<div id="signitmessage">
+				<div class="imgbox">
+					<img src="<%= shareimage %>" alt="">
+				</div>
+				<br>
+				<p>@<%= onesig %> just signed the Declaration of Independence <nobr>alongside those who stood up for freedom.</nobr></p>
+				<a id="facebookaftershare" data-trackclick="button" href="https://www.facebook.com/sharer/sharer.php?u=<%= shareURLParam %>" data-url="https://www.facebook.com/sharer/sharer.php?u=" target="_blank" class="btn btn-default btn-giantfacebook popup"><img src="/static/img/facebook-logo.png" alt="Twitter"> &nbsp;Share on Facebook</a>
+				<a id="twitteraftershare" data-trackclick="button" href="https://twitter.com/share?url=<%= shareURLParam %>&text=<%= twitterText %>" target="_blank" class="btn btn-default btn-gianttwitter popup"><img src="/static/img/twitter-bird-logo.png" alt="Twitter"> &nbsp;Share with Twitter</a>
+				<br>
+				<br>
+				<p class="cookiehide">Click below and add your name, too. <br>
+					<a href="https://twitter.com/share" data-trackclick="button" data-url="<%= trackerURL %>" data-text="<%= tweetmessage %>" target="_blank" class="btn btn-default btn-gianttwitter twittershare"><img src="/static/img/twitter-bird-logo.png" alt="Twitter"> &nbsp;Sign Now with Twitter</a>
+				</p>
+			</div>
+		<% } %>			
+			<div id="thankyou">
+				<h2><img src="/static/img/thankyou-bubble.png" alt=""> Thank You</h2>
+				<p>You just added your name on the Declaration of Independence. By doing so, you&rsquo;re helping to preserve our nation&rsquo;s historical achievements like speeches, memoirs and proof of men wearing tight knee-breeches.</p>
+				<div id="userimage">
+					<div class="imgbox"></div>
+					<a id="facebookaftershare" data-trackclick="button" href="https://www.facebook.com/sharer/sharer.php" data-url="https://www.facebook.com/sharer/sharer.php?u=" target="_blank" class="btn btn-default btn-giantfacebook popup"><img src="/static/img/facebook-logo.png" alt="Twitter"> &nbsp;Share on Facebook</a>
+					<a id="twitteraftershare" data-trackclick="button" href="https://twitter.com/share" data-url="https://twitter.com/share?url=" target="_blank" class="btn btn-default btn-gianttwitter popup"><img src="/static/img/twitter-bird-logo.png" alt="Twitter"> &nbsp;Share with Twitter</a>
+				</div>
+			</div>
+		</div>
+		<div class="buffer countbox">
+			<div class="countboxcutout">
+				<p class="sigcount" id="sigcount"><%= sigcount %></p>
+				<small>People have signed</small>
+			</div>
+		</div>
+		<div class="buffer">
+			<div id="signatures">
+				<ul class="signaturelist">
+					<% 
+					var rndrotate = 0;
+					for(var i=0; i<signatures.length; i++) {
+						rndrotate = Math.floor( (5*Math.random() ) );
+					%>
+					<li id="time<%= signatures[i]['time'] %>" class="usersig rotate<%= rndrotate %>">
+						<a href="/signed/<%= signatures[i]['name'].replace(/[^a-zA-Z0-9_]*/gi,'') %>/"><%= signatures[i]['name'] %></a>
+						<% for (var prop in signatures[i]) {%>
+						<span class="sig-metadata meta-<%= prop %> "><%= signatures[i][prop] %></span>
+						<% } %>
+					</li>
+					<% } %>
+					<%
+					var place = 1;
+					var flops = [ 5, 2, 5 ]; 
+					var signum = 1;
+					var rhythym = flops.length;
+					for(var i=0; i<56; i++) {
+
+					%>
+					<li class="originalsig" data-place="<%= (place) %>"><img src="/static/img/original-signatures/sig-<%= signum %>.png" alt=""></li>
+					<% 
+						place += flops[ (i % rhythym ) ];
+						signum++;
+					} 
+					%>
+				</ul>
+			</div>
+		</div>
+		<div class="footer container">
+			<p>&copy;2014 Peter Mayer | <a href="http://www.peteramayer.com/know-your-rights/">Privacy Policy</a> </p>
+		</div>
+	</main>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-1833996-34', 'signit2014.com');
+	  ga('send', 'pageview');
+	</script>
+	<script src="/static/js/jquery.min.js"></script>
+	<script src="/static/js/jquery.plugins.min.js"></script>
+	<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/static/js/TweenMax.min.js"></script>
+	<script src="/static/js/jquery.gsap.min.js"></script>
+	<script src="/static/js/signit.js"></script>
+</body>
+</html>

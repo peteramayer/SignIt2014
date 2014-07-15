@@ -1,0 +1,6 @@
+[{
+	"name" : "SignIt2014",
+	"script" : "/nodelab_www/app/app.js",
+	"cwd" : "/nodelab_www/app",
+	"watch": false
+}]

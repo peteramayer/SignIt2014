@@ -1,0 +1,39 @@
+# TESTING NGINX CONFIG FOR VAGRANT ONLY.
+upstream app_nodelab {
+  server 127.0.0.1:3000;
+}
+
+# the nginx server instance
+server {
+  listen 0.0.0.0:80;
+  server_name signit2014;
+  sendfile off; #COMMENT OUT IN PRODUCTION. VAGRANT BUG.
+  server_tokens off;
+  access_log /var/log/nginx/nodeserv.log;
+
+  # PROXY REQUEST TO NODEJS
+  location / {
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-NginX-Proxy true;
+
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+
+    proxy_pass http://app_nodelab/;
+    proxy_redirect off;
+
+    # Password protection
+    # auth_basic "Restricted";
+    # auth_basic_user_file /nodelab_www/.htpasswd;    
+  }
+
+  # static files
+  location /static/ {
+    root /nodelab_www/app;
+    access_log off;
+    expires 30s;
+  }
+}
