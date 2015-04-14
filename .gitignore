@@ -3,3 +3,4 @@
 /app/static/savedsignatures*
 /app/data/signatures
 *npm-debug.log
+/vagrant/.vagrant
